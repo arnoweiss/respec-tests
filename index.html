@@ -3,32 +3,11 @@
 <meta name="generator" content="ReSpec 35.0.2">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
-pre.idl{padding:1em;position:relative}
-pre.idl>code{color:#000;color:var(--text,#000)}
-@media print{
-pre.idl{white-space:pre-wrap}
-}
-.idlHeader{display:block;width:150px;background:#8ccbf2;background:var(--def-border,#8ccbf2);color:#fff;color:var(--defrow-border,#fff);font-family:sans-serif;font-weight:700;margin:-1em 0 1em -1em;height:28px;line-height:28px}
-.idlHeader a.self-link{margin-left:.3cm;text-decoration:none;border-bottom:none;color:inherit}
-.idlID{font-weight:700;color:#005a9c}
-.idlType{color:#005a9c}
-.idlName{color:#ff4500}
-.idlName a{color:#ff4500;border-bottom:1px dotted #ff4500;text-decoration:none}
-a.idlEnumItem{color:#000;border-bottom:1px dotted #ccc;text-decoration:none}
-.idlSuperclass{font-style:italic;color:#005a9c}
-.idlDefaultValue,.idlParamName{font-style:italic}
-.extAttr{color:#666}
-.idlSectionComment{color:gray}
-.idlIncludes a{font-weight:700}
-.respec-button-copy-paste:focus{text-decoration:none;border-color:#51a7e8;outline:0;box-shadow:0 0 5px rgba(81,167,232,.5)}
-.respec-button-copy-paste:is(:focus:hover,.selected:focus){border-color:#51a7e8}
-.respec-button-copy-paste:is(:hover,:active,.zeroclipboard-is-hover,.zeroclipboard-is-active){text-decoration:none;background-color:#ddd;background-image:linear-gradient(#eee,#ddd);border-color:#ccc}
-.respec-button-copy-paste:is(:active,.selected,.zeroclipboard-is-active){background-color:#dcdcdc;background-image:none;border-color:#b5b5b5;box-shadow:inset 0 2px 4px rgba(0,0,0,.15)}
-.respec-button-copy-paste.selected:hover{background-color:#cfcfcf}
-.respec-button-copy-paste:is(:disabled,:disabled:hover,.disabled,.disabled:hover){color:rgba(102,102,102,.5);cursor:default;background-color:rgba(229,229,229,.5);background-image:none;border-color:rgba(197,197,197,.5);box-shadow:none}
-@media print{
-.respec-button-copy-paste{visibility:hidden}
-}
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
 </style>
 <style>
 dfn{cursor:pointer}
@@ -99,8 +78,27 @@ dd{margin-left:0}
 }
 </style>
 <meta name="color-scheme" content="light">
-<title>My Awesome API</title>
-<meta name="description" content="This is required.">
+<title>Eclipse Decentralized Claims Protocol</title>
+<meta name="description" content="This document defines a base protocol for communicating participant identities and claims in a Tractus-X dataspace. This
+        specification assumes familiarity with the [Tractus-X Dataspace Topology Specification](tx.dataspace.topology.md).">
+<style>
+.hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{--base:#282c34;--mono-1:#abb2bf;--mono-2:#818896;--mono-3:#5c6370;--hue-1:#56b6c2;--hue-2:#61aeee;--hue-3:#c678dd;--hue-4:#98c379;--hue-5:#e06c75;--hue-5-2:#be5046;--hue-6:#d19a66;--hue-6-2:#e6c07b}
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
 <style>
 var{position:relative;cursor:pointer}
 var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
@@ -118,27 +116,27 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   ],
   "github": {
     "branch": "main",
-    "repoURL": "user/my-awesome-api"
+    "repoURL": "arnoweiss/respec-tests"
   },
   "xref": "web-platform",
   "publishISODate": "2024-06-04T00:00:00.000Z",
   "generatedSubtitle": "Unofficial Draft 04 June 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-UD"></head>
-<body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
+<body class="h-entry" data-cite="HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
     
-    <h1 id="title" class="title">My Awesome API</h1> 
+    <h1 id="title" class="title">Eclipse Decentralized Claims Protocol</h1> 
     <p id="w3c-state">Unofficial Draft <time class="dt-published" datetime="2024-06-04">04 June 2024</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
         
         <dt>Latest published version:</dt><dd>
-                <a href="https://www.w3.org/my-awesome-api/">https://www.w3.org/my-awesome-api/</a>
+                <a href="https://www.w3.org/respec-tests/">https://www.w3.org/respec-tests/</a>
               </dd>
-        <dt>Latest editor's draft:</dt><dd><a href="https://user.github.io/my-awesome-api/">https://user.github.io/my-awesome-api/</a></dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://arnoweiss.github.io/respec-tests/">https://arnoweiss.github.io/respec-tests/</a></dd>
         <dt>History:</dt><dd>
-                    <a href="https://github.com/user/my-awesome-api/commits/main">Commit history</a>
+                    <a href="https://github.com/arnoweiss/respec-tests/commits/main">Commit history</a>
                   </dd>
         
         
@@ -151,10 +149,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         
         
         <dt>Feedback:</dt><dd>
-        <a href="https://github.com/user/my-awesome-api/">GitHub user/my-awesome-api</a>
-        (<a href="https://github.com/user/my-awesome-api/pulls/">pull requests</a>,
-        <a href="https://github.com/user/my-awesome-api/issues/new/choose">new issue</a>,
-        <a href="https://github.com/user/my-awesome-api/issues/">open issues</a>)
+        <a href="https://github.com/arnoweiss/respec-tests/">GitHub arnoweiss/respec-tests</a>
+        (<a href="https://github.com/arnoweiss/respec-tests/pulls/">pull requests</a>,
+        <a href="https://github.com/arnoweiss/respec-tests/issues/new/choose">new issue</a>,
+        <a href="https://github.com/arnoweiss/respec-tests/issues/">open issues</a>)
       </dd>
         
         
@@ -174,7 +172,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 
 <section id="abstract" class="introductory"><h2>Abstract</h2>
     <p>
-        This is required.
+        This document defines a base protocol for communicating participant identities and claims in a Tractus-X dataspace. This
+        specification assumes familiarity with the [Tractus-X Dataspace Topology Specification](tx.dataspace.topology.md).
     </p>
 </section>
 <section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
@@ -183,23 +182,43 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       any standards organization.
     </p>
     <p>
-        This is required.
+        This document is currently under revision as it is being transferred from the Eclipse Tractus-X
+        organization to the governance and maintenance of the Eclipse Dataspace Working Group.
     </p>
-</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#start-your-spec"><bdi class="secno">1. </bdi>Start your spec!</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#bar-attribute"><bdi class="secno">1.1 </bdi><span data-export="" data-dfn-type="attribute" data-idl="attribute" data-title="bar" data-dfn-for="Foo" data-type="DOMString" data-lt="bar" data-local-lt="Foo.bar"><code>bar</code></span> attribute</a></li><li class="tocline"><a class="tocxref" href="#dothefoo-method"><bdi class="secno">1.2 </bdi><span data-export="" data-dfn-type="method" data-idl="operation" data-title="doTheFoo()" data-dfn-for="Foo" data-type="undefined" data-lt="doTheFoo()" data-local-lt="Foo.doTheFoo|Foo.doTheFoo()|doTheFoo"><code>doTheFoo()</code></span> method</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">2. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li></ol></li></ol></nav>
-<section data-dfn-for="Foo" id="start-your-spec"><div class="header-wrapper"><h2 id="x1-start-your-spec"><bdi class="secno">1. </bdi>Start your spec!</h2><a class="self-link" href="#start-your-spec" aria-label="Permalink for Section 1."></a></div>
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#features-of-respec-useful-for-dcp-specification"><bdi class="secno">1. </bdi>Features of Respec useful for DCP specification</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#dothefoo-method"><bdi class="secno">1.1 </bdi><span>doTheFoo()</span> method</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">2. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li></ol></li></ol></nav>
+<section id="features-of-respec-useful-for-dcp-specification"><div class="header-wrapper"><h2 id="x1-features-of-respec-useful-for-dcp-specification"><bdi class="secno">1. </bdi>Features of Respec useful for DCP specification</h2><a class="self-link" href="#features-of-respec-useful-for-dcp-specification" aria-label="Permalink for Section 1."></a></div>
     
-    <pre class="idl def" id="webidl-47642570"><span class="idlHeader"><a class="self-link" href="#webidl-47642570">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-foo" data-title="Foo">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=Window</span>]
-interface <dfn data-export="" data-dfn-type="interface" id="dom-foo" data-idl="interface" data-title="Foo" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>Foo</code></dfn> {<span data-idl="" class="idlAttribute" id="idl-def-foo-bar" data-title="bar" data-dfn-for="Foo">
-  attribute<span class="idlType"> <a data-link-type="idl" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <a class="internalDFN idlName" data-link-type="attribute" href="#dom-foo-bar" id="ref-for-dom-foo-bar-1"><code>bar</code></a>;</span><span data-idl="" class="idlMethod" id="idl-def-foo-dothefoo" data-title="doTheFoo" data-dfn-for="Foo"><span class="idlType">
-  <a data-link-type="idl" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-undefined">undefined</a></span> <a class="internalDFN idlName" data-link-type="method" href="#dom-foo-dothefoo" id="ref-for-dom-foo-dothefoo-1"><code>doTheFoo</code></a>();</span>
-};</span></code></pre>
-    <section id="bar-attribute"><div class="header-wrapper"><h3 id="x1-1-bar-attribute"><bdi class="secno">1.1 </bdi><dfn data-export="" data-dfn-type="attribute" id="dom-foo-bar" data-idl="attribute" data-title="bar" data-dfn-for="Foo" data-type="DOMString" data-lt="bar" data-local-lt="Foo.bar" tabindex="0" aria-haspopup="dialog"><code>bar</code></dfn> attribute</h3><a class="self-link" href="#bar-attribute" aria-label="Permalink for Section 1.1"></a></div>
+    <p>
+        Automated bibliography management for well-known references such as [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-ld" title="JSON-LD 1.0">json-ld</a></cite>], [<cite><a class="bibref" data-link-type="biblio" href="#bib-odrl21-vocab" title="ODRL Version 2.1 Common Vocabulary">odrl21-vocab</a></cite>] etc.
+    </p>
+    <aside class="example" id="example-example-payload"><div class="marker">
+    <a class="self-link" href="#example-example-payload">Example<bdi> 1</bdi></a><span class="example-title">: Example payload</span>
+  </div>
+        <p>
+            A http request from the DCP spec, legacy namespaces obvs...
+        </p><p>
+        </p><pre aria-busy="false"><code class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/credentials</span> <span class="hljs-meta">HTTP/1.1</span>
+<span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>server.example.com
+<span class="hljs-attribute">Content-Type</span><span class="hljs-punctuation">: </span>application/json
+<span class="hljs-attribute">Authorization</span><span class="hljs-punctuation">: </span>Bearer ......
+
+<span class="json">{
+   <span class="hljs-attr">"@context"</span>: [
+    <span class="hljs-string">"https://w3id.org/tractusx-trust/v0.8"</span>,
+     <span class="hljs-string">"https://www.w3.org/2018/credentials/v1"</span>
+   ],
+   <span class="hljs-attr">"@type"</span>: <span class="hljs-string">"CredentialRequestMessage"</span>,
+   <span class="hljs-attr">"format"</span>:<span class="hljs-string">"ldp_vd"</span>,
+   <span class="hljs-attr">"type"</span>:[
+      <span class="hljs-string">"VerifiableCredential"</span>,
+      <span class="hljs-string">"EntityCredential"</span>
+   ],
+}</span></code></pre>
+    </aside>
+
+    <section id="dothefoo-method"><div class="header-wrapper"><h3 id="x1-1-dothefoo-method"><bdi class="secno">1.1 </bdi><dfn id="dfn-dothefoo" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">doTheFoo()</dfn> method</h3><a class="self-link" href="#dothefoo-method" aria-label="Permalink for Section 1.1"></a></div>
         
-        <p>When getting, the <a data-link-type="idl" href="#dom-foo-bar" class="internalDFN" id="ref-for-dom-foo-bar-2"><code>bar</code></a> attribute returns you a 🍹.</p>
-    </section>
-    <section id="dothefoo-method"><div class="header-wrapper"><h3 id="x1-2-dothefoo-method"><bdi class="secno">1.2 </bdi><dfn data-export="" data-dfn-type="method" id="dom-foo-dothefoo" data-idl="operation" data-title="doTheFoo()" data-dfn-for="Foo" data-type="undefined" data-lt="doTheFoo()" data-local-lt="Foo.doTheFoo|Foo.doTheFoo()|doTheFoo" tabindex="0" aria-haspopup="dialog"><code>doTheFoo()</code></dfn> method</h3><a class="self-link" href="#dothefoo-method" aria-label="Permalink for Section 1.2"></a></div>
-        
-        <p>When called, <a data-link-type="idl" data-lt="doTheFoo()" href="#dom-foo-dothefoo" class="internalDFN" id="ref-for-dom-foo-dothefoo-2"><code>doTheFoo</code></a><code>()</code> <em class="rfc2119">MUST</em> behave as follows:</p>
+        <p>When called, <a data-link-type="idl" data-xref-type="method" data-link-for="Foo" data-xref-for="Foo" data-lt="doTheFoo()" href="#dfn-dothefoo" class="internalDFN" id="ref-for-dfn-dothefoo-1"><code>doTheFoo</code></a><code>()</code> <em class="rfc2119">MUST</em> behave as follows:</p>
         <ol class="algorithm">
             <li>If <var>thing</var>....</li>
             <li>Let <var>someProp</var>... of the [<cite><a class="bibref" data-link-type="biblio" href="#bib-dom" title="DOM Standard">DOM</a></cite>] spec.</li>
@@ -220,51 +239,27 @@ interface <dfn data-export="" data-dfn-type="interface" id="dom-foo" data-idl="i
     
     <dl class="bibliography"><dt id="bib-dom">[DOM]</dt><dd>
       <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
+    </dd><dt id="bib-json-ld">[json-ld]</dt><dd>
+      <a href="https://www.w3.org/TR/json-ld/"><cite>JSON-LD 1.0</cite></a>. Manu Sporny; Gregg Kellogg; Markus Lanthaler.  W3C. 3 November 2020. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld/">https://www.w3.org/TR/json-ld/</a>
+    </dd><dt id="bib-odrl21-vocab">[odrl21-vocab]</dt><dd>
+      <a href="https://www.w3.org/community/odrl/vocab/2.1/"><cite>ODRL Version 2.1 Common Vocabulary</cite></a>. Renato Iannella; Michael Steidl; Susanne Guth.  W3C. 5 March 2015. W3C Community Group Final Specification. URL: <a href="https://www.w3.org/community/odrl/vocab/2.1/">https://www.w3.org/community/odrl/vocab/2.1/</a>
     </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
     </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
-    </dd><dt id="bib-webidl">[webidl]</dt><dd>
-      <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
     </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
-  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-foo" aria-label="Links in this document to definition: Foo">
+  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-dothefoo" aria-label="Links in this document to definition: doTheFoo()">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="#dom-foo" aria-label="Permalink for definition: Foo. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-foo-bar" aria-label="Links in this document to definition: bar">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-foo-bar" aria-label="Permalink for definition: bar. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-47642570">IDL</a>
+        <a class="self-link" href="#dfn-dothefoo" aria-label="Permalink for definition: doTheFoo(). Activate to close this dialog.">Permalink</a>
+         
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-dom-foo-bar-1" title="§ 1. Start your spec!">§ 1. Start your spec!</a> 
-    </li><li>
-      <a href="#ref-for-dom-foo-bar-2" title="§ 1.1 bar attribute">§ 1.1 bar attribute</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-foo-dothefoo" aria-label="Links in this document to definition: doTheFoo()">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-foo-dothefoo" aria-label="Permalink for definition: doTheFoo(). Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-47642570">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-dom-foo-dothefoo-1" title="§ 1. Start your spec!">§ 1. Start your spec!</a> 
-    </li><li>
-      <a href="#ref-for-dom-foo-dothefoo-2" title="§ 1.2 doTheFoo() method">§ 1.2 doTheFoo() method</a> 
+      <a href="#ref-for-dfn-dothefoo-1" title="§ 1.1 doTheFoo() method">§ 1.1 doTheFoo() method</a> 
     </li>
   </ul>
     </div><script id="respec-dfn-panel">(() => {
