@@ -35,12 +35,33 @@
 <section>
     <h2>Features of Respec useful for DCP specification</h2>
     <p>
-        Automated bibliography management for well-known references such as [[json-ld]], [[odrl22-vocab]] etc.
+        Automated bibliography management for well-known references such as [[json-ld]], [[odrl21-vocab]] etc.
     </p>
-    <section>
-        <h2><dfn>bar</dfn> attribute</h2>
-        <p>When getting, the {{Foo/bar}} attribute returns you a 🍹.</p>
-    </section>
+    <aside class="example" title="Example payload">
+        <p>
+            A http request from the DCP spec, legacy namespaces obvs...
+        <p>
+        <pre class="http">
+POST /credentials HTTP/1.1
+Host: server.example.com
+Content-Type: application/json
+Authorization: Bearer ......
+
+{
+   "@context": [
+    "https://w3id.org/tractusx-trust/v0.8",
+     "https://www.w3.org/2018/credentials/v1"
+   ],
+   "@type": "CredentialRequestMessage",
+   "format":"ldp_vd",
+   "type":[
+      "VerifiableCredential",
+      "EntityCredential"
+   ],
+}
+  </pre>
+    </aside>
+
     <section>
         <h2><dfn>doTheFoo()</dfn> method</h2>
         <p>When called, {{Foo/doTheFoo()}} MUST behave as follows:</p>
