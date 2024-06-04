@@ -23,7 +23,7 @@
 <section id='abstract'>
     <p>
         This document defines a base protocol for communicating participant identities and claims in a Tractus-X dataspace. This
-        specification assumes familiarity with the [Tractus-X Dataspace Topology Specification](tx.dataspace.topology.md).
+        specification assumes familiarity with the Tractus-X Dataspace Topology Specification.
     </p>
 </section>
 <section id='sotd'>
@@ -34,14 +34,23 @@
 </section>
 <section>
     <h2>Features of Respec useful for DCP specification</h2>
-    <p>
-        Automated bibliography management for well-known references such as [[json-ld]], [[odrl21-vocab]] etc.
-    </p>
-    <aside class="example" title="Example payload">
+    <section>
+        <h3>
+            Automated bibliography management
+        </h3>
         <p>
-            A http request from the DCP spec, legacy namespaces obvs...
-        <p>
-        <pre class="http">
+            for well-known references such as [[json-ld]], [[odrl21-vocab]] etc.
+        </p>
+    </section>
+    <section>
+        <h3>
+            Rendering of HTTP requests etc
+        </h3>
+        <aside class="example" title="Some payload from DCP spec idk">
+            <p>
+                A http request from the DCP spec, legacy namespaces obvs...
+            <p>
+            <pre class="http">
 POST /credentials HTTP/1.1
 Host: server.example.com
 Content-Type: application/json
@@ -60,7 +69,9 @@ Authorization: Bearer ......
    ],
 }
   </pre>
-    </aside>
+        </aside>
+
+    </section>
 
     <section>
         <h2><dfn>doTheFoo()</dfn> method</h2>
