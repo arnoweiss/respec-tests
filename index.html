@@ -4,9 +4,7 @@
     <meta charset='utf-8'>
     <script src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
     <script class='remove'>
-        // All config options at https://respec.org/docs/
         var respecConfig = {
-          // Working Groups ids at https://respec.org/w3c/groups/
           specStatus: "unofficial",
           editors: [{
             name: "Arno Weiß",
@@ -14,34 +12,31 @@
           }],
           github: {
             branch: "main",
-            repoURL: "user/my-awesome-api",
+            repoURL: "arnoweiss/respec-tests",
           },
-          // See https://respec.org/docs/#xref for usage.
           xref: "web-platform",
         };
     </script>
 </head>
 <body>
-<h1 id="title">My Awesome API</h1>
+<h1 id="title">Eclipse Decentralized Claims Protocol</h1>
 <section id='abstract'>
     <p>
-        This is required.
+        This document defines a base protocol for communicating participant identities and claims in a Tractus-X dataspace. This
+        specification assumes familiarity with the [Tractus-X Dataspace Topology Specification](tx.dataspace.topology.md).
     </p>
 </section>
 <section id='sotd'>
     <p>
-        This is required.
+        This document is currently under revision as it is being transferred from the Eclipse Tractus-X
+        organization to the governance and maintenance of the Eclipse Dataspace Working Group.
     </p>
 </section>
-<section data-dfn-for="Foo">
-    <h2>Start your spec!</h2>
-    <pre class="idl">
-      [Exposed=Window]
-      interface Foo {
-        attribute DOMString bar;
-        undefined doTheFoo();
-      };
-      </pre>
+<section>
+    <h2>Features of Respec useful for DCP specification</h2>
+    <p>
+        Automated bibliography management for well-known references such as [[json-ld]], [[odrl22-vocab]] etc.
+    </p>
     <section>
         <h2><dfn>bar</dfn> attribute</h2>
         <p>When getting, the {{Foo/bar}} attribute returns you a 🍹.</p>
